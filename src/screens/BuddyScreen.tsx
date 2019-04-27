@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { StyleSheet, ScrollView, Text} from 'react-native';
+
 import { colors } from '../styles/index.style';
 
-export default class MealPlanScreen extends React.Component {
+export default class BuddyScreen extends React.Component {
     render() {
         return (
             <ScrollView style={styles.main}>
-                <Text>Meal Plan</Text>
+                <Text>Buddy System</Text>
             </ScrollView>
         );
     }
@@ -15,6 +16,6 @@ export default class MealPlanScreen extends React.Component {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        backgroundColor: colors.background,
+        backgroundColor: colors.background, 
     },
 });

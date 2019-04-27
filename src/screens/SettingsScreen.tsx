@@ -2,11 +2,11 @@ import * as React from 'react';
 import { StyleSheet, ScrollView, Text} from 'react-native';
 import { colors } from '../styles/index.style';
 
-export default class MealPlanScreen extends React.Component {
+export default class SettingsScreen extends React.Component {
     render() {
         return (
             <ScrollView style={styles.main}>
-                <Text>Meal Plan</Text>
+                <Text>Settings</Text>
             </ScrollView>
         );
     }

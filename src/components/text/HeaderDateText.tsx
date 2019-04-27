@@ -1,14 +1,18 @@
 import * as React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { TextStyle, Text } from 'react-native';
+import { colors } from '../../styles/index.style'
 
+interface Props {
+    style?: TextStyle
+}
 export default class HeaderDateText extends React.Component<Props> {
     render() {
         return <Text {...this.props} style={[this.props.style, {
             fontFamily: 'System',
-            fontSize: 15,
+            fontSize: 12,
             fontWeight: '500',
             paddingTop: 10,
-            color: 'rgba(0,0,0,0.71)',
+            color: colors.headerDateBlack,
             textTransform: 'uppercase'
         }]} />;
     }

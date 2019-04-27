@@ -5,6 +5,7 @@ import {
     ImageSourcePropType,
     StyleSheet,
     Text,
+    TouchableOpacity,
     View
 } from 'react-native';
 
@@ -29,8 +30,7 @@ class RecipeCard extends React.Component<Props> {
     }
     
     public render() {
-        return <View style={styles.container}>
-            
+    return <TouchableOpacity style={styles.container} activeOpacity={0.9}>
             <Image source={this.props.image} style={styles.image}/>
             <LinearGradient colors={['transparent', 'rgba(0,0,0,0.5)']} style={styles.overlay}>
             </LinearGradient>
@@ -38,7 +38,7 @@ class RecipeCard extends React.Component<Props> {
                 <Text style={styles.subtitle}>{this.props.subtitle}</Text>
                 <Text style={styles.title}>{this.props.title}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     }
 }
 
@@ -47,16 +47,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         borderRadius: 12,
-        height: SCREEN_HEIGHT - 270,
-        marginBottom:20,
-        backgroundColor:'rgba(255,0,0,1)',
+        height: SCREEN_HEIGHT - 326,
+        marginBottom: 20,
+        backgroundColor:'rgba(255,0,0,0)',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 4,
+            height: 5,
         },
         shadowOpacity: 0.30,
-        shadowRadius: 4.65,
+        shadowRadius: 5,
 
         elevation: 8,
     },
@@ -77,11 +77,11 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 34,
-        fontWeight: '700',
+        fontWeight: '900',
         color: 'rgba(255, 255, 255, 0.91)'
     },
     subtitle: {
-        fontSize: 11,
+        fontSize: 13,
         fontWeight: '500',
         color: 'rgba(255, 255, 255, 0.91)',
         textTransform: 'uppercase'
