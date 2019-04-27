@@ -7,6 +7,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@types/": "expo/vector-icons",
+    "@types/expo__vector-icons": "^9.0.1",
     "@types/react-native-snap-carousel": "^3.7.1",
     "expo": "^32.0.0",
     "react": "16.5.0",

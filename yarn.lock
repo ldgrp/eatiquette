@@ -875,6 +875,12 @@
     react-native-safe-area-view "^0.13.0"
     react-native-screens "^1.0.0 || ^1.0.0-alpha"
 
+"@types/@expo/vector-icons":
+  version "10.0.1"
+  resolved "https://codeload.github.com/expo/vector-icons/tar.gz/234de654eeeea8ea6582f4ca3e17a92c7dbcfd4c"
+  dependencies:
+    lodash "^4.17.4"
+
 "@types/expo@^32.0.10":
   version "32.0.10"
   resolved "https://registry.yarnpkg.com/@types/expo/-/expo-32.0.10.tgz#ae15e428bb4dcfcb432d9bfead0de7a563c59e98"
@@ -884,6 +890,15 @@
     "@types/react" "*"
     "@types/react-native" "*"
     react-native-maps "*"
+
+"@types/expo__vector-icons@^9.0.1":
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/@types/expo__vector-icons/-/expo__vector-icons-9.0.1.tgz#46a0a9701cb69e632a05b87aafa7b0f537919896"
+  integrity sha512-xcdtdQSojtUO0mSuVDCP01cyqAXhZCIMGN1jXuqfA6DbOIg5cIcIBLIC5vhiGP0vR5gdviSyIHgPf4NR2d3wOg==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+    "@types/react-native-vector-icons" "*"
 
 "@types/fbemitter@*", "@types/fbemitter@^2.0.32":
   version "2.0.32"
@@ -921,6 +936,14 @@
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/@types/react-native-snap-carousel/-/react-native-snap-carousel-3.7.1.tgz#26222d5d23cf1971f40c6b3ae71acdf709589f77"
   integrity sha512-x45p/1OEMZ+XIURCrPDMQmSSnAmrVpEoeH0JePaH6msWWudFeWo+54IFlTSLOcQBW8nThXdeTfAPG058D684hQ==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native-vector-icons@*":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.0.tgz#3ff6b29c8e831f11364c12801ae7966dab8dcbe0"
+  integrity sha512-UNRMIMbqeryNDQvZVZoPyqXIKLWmLRInhN5gDySxquJcZvWNW+1NSm4lXQlRdzC9Da3mSU1QEppoeI438f2JRw==
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"

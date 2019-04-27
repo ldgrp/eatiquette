@@ -1,5 +1,5 @@
-import React from 'react';
-import { Platform } from 'react-native';
+import * as React from 'react';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import HomeScreen from '../screens/HomeScreen';
@@ -29,6 +29,7 @@ const GroceryListStack = createStackNavigator({
 });
 
 GroceryListStack.navigationOptions = {
+    title: 'Grocery List',
     tabBarLabel: 'Grocery List'
 };
 
@@ -56,5 +57,31 @@ export default createBottomTabNavigator({
     SettingsStack,
 },
 {
-    initialRouteName: "HomeStack"
+    defaultNavigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({ focused, horizontal, tintColor }) => {
+            const { routeName } = navigation.state;
+            let IconComponent = Ionicons;
+            let iconName = 'ios-information';
+            let size = 25;
+
+            if (routeName === 'HomeStack') {
+                iconName = 'ios-home';
+            } else if (routeName === 'MealPlanStack') {
+                IconComponent = MaterialCommunityIcons;
+                iconName = 'food';
+            } else if (routeName == 'GroceryListStack') {
+                IconComponent = MaterialCommunityIcons;
+                iconName = 'cart';
+            } else if (routeName === 'BuddyStack') {
+                iconName = 'md-people';
+            } else if (routeName === 'SettingsStack') {
+                iconName = 'ios-settings';
+            }
+        return <IconComponent name={iconName} size={size} color={tintColor} style={{marginTop: 6}}/>;
+        }
+    }),
+    tabBarOptions: {
+        activeTintColor: '#2AC940',
+        inactiveTintColor: 'gray'
+    }
 });
