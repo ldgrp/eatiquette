@@ -2,6 +2,7 @@ import * as React from 'react';
 import { 
     Dimensions,
     Image,
+    ImageSourcePropType,
     StyleSheet,
     Text,
     View
@@ -14,11 +15,13 @@ let SCREEN_HEIGHT = Dimensions.get('window').height;
 
 let BORDER_RADIUS= 12;
 
+
 interface Props {
     title: string,
     subtitle: string,
-    time: number
+    image: ImageSourcePropType,
 }
+
 
 class RecipeCard extends React.Component<Props> {
     constructor(props: Props) {
@@ -27,16 +30,18 @@ class RecipeCard extends React.Component<Props> {
     
     public render() {
         return <View style={styles.container}>
-            <Image source={require("../../assets/yogurt.jpg")} style={styles.image}/>
+            
+            <Image source={this.props.image} style={styles.image}/>
             <LinearGradient colors={['transparent', 'rgba(0,0,0,0.5)']} style={styles.overlay}>
             </LinearGradient>
             <View style={styles.textContainer}>
-                <Text style={styles.subtitle}>Collections</Text>
-                <Text style={styles.name}>Hello World!</Text>
+                <Text style={styles.subtitle}>{this.props.subtitle}</Text>
+                <Text style={styles.title}>{this.props.title}</Text>
             </View>
         </View>
     }
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -70,7 +75,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         borderRadius: BORDER_RADIUS
     },
-    name: {
+    title: {
         fontSize: 34,
         fontWeight: '700',
         color: 'rgba(255, 255, 255, 0.91)'

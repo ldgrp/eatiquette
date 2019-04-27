@@ -8,7 +8,7 @@ export default class HeaderDateText extends React.Component<Props> {
             fontSize: 15,
             fontWeight: '500',
             paddingTop: 10,
-            color: 'rgba(0,0,0,0.91)',
+            color: 'rgba(0,0,0,0.71)',
             textTransform: 'uppercase'
         }]} />;
     }

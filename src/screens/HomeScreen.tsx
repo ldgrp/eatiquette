@@ -29,7 +29,7 @@ export default class HomeScreen extends React.Component {
                 <HeaderDateText style={{}}>16 April</HeaderDateText>
                 <HeaderText style={{}}>Tuesday</HeaderText>
             </View>
-                <RecipeCard title="Braised Miso Carrots" subtitle="with Quinoa"/>
+                <RecipeCard image={require('../../assets/yogurt.jpg')} title="Yogurt!" subtitle="Collections"/>
                 <RecipeCard title="Roasted Beancurd" subtitle="on bed of vegetables"/>
             </ScrollView>
             </SafeAreaView>
