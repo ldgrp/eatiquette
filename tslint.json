@@ -4,8 +4,16 @@
     "tslint-config-airbnb"
   ],
   "rules": {
+    "max-line-length": {
+      "options": [120]
+    },
     "no-any": true,
     "prefer-array-literal": [true, { "allow-type-parameters": true }],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"]
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"],
+    "semicolon": [true, "always", "ignore-interfaces"],
+    "interface-name": [false],
+    "ter-indent": [true, 4],
+    "object-literal-sort-keys": false,
+    "member-access": [true, "no-public"]
   }
 }
