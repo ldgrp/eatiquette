@@ -5,6 +5,7 @@ import {
     ScrollView,
     StyleSheet,
 } from 'react-native';
+import { NavigationComponent } from 'react-navigation';
 
 import Item, { IItem } from '../components/grocerylist/Item';
 import { GROCERYLIST } from '../static/grocery';
@@ -16,7 +17,11 @@ interface State {
     isInput: boolean
 }
 
-export default class GroceryListScreen extends React.Component<{}, State> {
+interface Props {
+    navigation: NavigationComponent
+}
+
+export default class GroceryListScreen extends React.Component<Props, State> {
     static navigationOptions = {
         title: 'Grocery List',
     };
@@ -55,27 +60,38 @@ export default class GroceryListScreen extends React.Component<{}, State> {
     }
 
     render() {
+        const newItem: IItem = {
+            name: 'test',
+            description: 'testDescription',
+            done: true,
+            id: this.state.counter,
+        };
+
         return (
             <SafeAreaView style={styles.main}>
-            <ScrollView style={styles.container}>
-            {
-                this.state.items.map(item =>
-                    <Item
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        description={item.description}
-                        done={item.done}
-                        setDone={this.handleDone}/>,
-                )
-            }
-            </ScrollView>
-            <Ionicons
-                name={'ios-add-circle'}
-                size={60}
-                color={'#2AC940'}
-                style={styles.button}
-                onPress={() => this.setState({ isInput: true })}/>
+                <ScrollView style={styles.container}>
+                    {this.state.items.map(item => (
+                        <Item
+                            key={item.id}
+                            id={item.id}
+                            name={item.name}
+                            description={item.description}
+                            done={item.done}
+                            setDone={this.handleDone}
+                        />
+                    ))}
+                </ScrollView>
+                <Ionicons
+                    name={'ios-add-circle'}
+                    size={60}
+                    color={'#2AC940'}
+                    style={styles.button}
+                    onPress={() =>
+                        this.props.navigation.navigate('Modal', {
+                            onModalDismiss: () => this.handleAddItem(newItem),
+                        })
+                    }
+                />
             </SafeAreaView>
         );
     }
@@ -86,7 +102,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.background,
     },
-    button:{
+    button: {
         position: 'absolute',
         bottom: 30,
         right: 30,

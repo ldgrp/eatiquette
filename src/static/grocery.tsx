@@ -5,24 +5,24 @@ export const GROCERYLIST: IItem[] = [
         name: 'Milk',
         description: '2L',
         done: false,
-        id: 1,
+        id: 0,
     },
     {
         name: 'Bacon',
         description: '100g',
         done: false,
-        id: 2,
+        id: 1,
     },
     {
         name: 'All-Purpose Flour',
         description: '2000g',
         done: false,
-        id: 3,
+        id: 2,
     },
     {
         name: 'Salt',
         description: '',
         done: false,
-        id: 4,
+        id: 3,
     },
 ];
