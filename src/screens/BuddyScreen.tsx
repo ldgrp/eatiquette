@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, ScrollView, Text} from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
 
 import { colors } from '../styles/index.style';
 
@@ -16,6 +16,6 @@ export default class BuddyScreen extends React.Component {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        backgroundColor: colors.background, 
+        backgroundColor: colors.background,
     },
 });

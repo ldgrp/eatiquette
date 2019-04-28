@@ -1,5 +1,3 @@
-import { StyleSheet } from 'react-native';
-
 export const colors = {
     background: 'rgba(242, 242, 242, 1)',
     black: 'rgba(0, 0, 0, 0.91)',

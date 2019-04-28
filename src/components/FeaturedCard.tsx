@@ -1,21 +1,18 @@
+import { LinearGradient } from 'expo';
 import * as React from 'react';
-import { 
+import {
     Dimensions,
     Image,
     ImageSourcePropType,
     StyleSheet,
     Text,
     TouchableOpacity,
-    View
+    View,
 } from 'react-native';
 
-import {LinearGradient} from 'expo';
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-let SCREEN_WIDTH = Dimensions.get('window').width;
-let SCREEN_HEIGHT = Dimensions.get('window').height;
-
-let BORDER_RADIUS= 12;
-
+const BORDER_RADIUS = 12;
 
 interface Props {
     title: string,
@@ -23,14 +20,13 @@ interface Props {
     image: ImageSourcePropType,
 }
 
-
 class RecipeCard extends React.Component<Props> {
     constructor(props: Props) {
         super(props);
     }
-    
-    public render() {
-    return <TouchableOpacity style={styles.container} activeOpacity={0.9}>
+
+    render() {
+        return <TouchableOpacity style={styles.container} activeOpacity={0.9}>
             <Image source={this.props.image} style={styles.image}/>
             <LinearGradient colors={['transparent', 'rgba(0,0,0,0.5)']} style={styles.overlay}>
             </LinearGradient>
@@ -38,10 +34,9 @@ class RecipeCard extends React.Component<Props> {
                 <Text style={styles.subtitle}>{this.props.subtitle}</Text>
                 <Text style={styles.title}>{this.props.title}</Text>
             </View>
-        </TouchableOpacity>
+        </TouchableOpacity>;
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -50,7 +45,7 @@ const styles = StyleSheet.create({
         height: SCREEN_HEIGHT - 326,
         marginBottom: 20,
         backgroundColor:'rgba(255,0,0,0)',
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 5,
@@ -73,25 +68,25 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        borderRadius: BORDER_RADIUS
+        borderRadius: BORDER_RADIUS,
     },
     title: {
         fontSize: 34,
         fontWeight: '900',
-        color: 'rgba(255, 255, 255, 0.91)'
+        color: 'rgba(255, 255, 255, 0.91)',
     },
     subtitle: {
         fontSize: 13,
         fontWeight: '500',
         color: 'rgba(255, 255, 255, 0.91)',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
     },
     textContainer: {
         position: 'absolute',
         left: 20,
         right: 0,
         bottom: 30,
-    }
+    },
 });
 
 export default RecipeCard;

@@ -1,10 +1,10 @@
-import { StyleSheet, Dimensions, Platform } from 'react-native';
+import { Dimensions, Platform, StyleSheet } from 'react-native';
 import { colors } from './index.style';
 
 const IS_IOS = Platform.OS === 'ios';
-const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
+const { width: viewportWidth } = Dimensions.get('window');
 
-function wp (percentage: number) {
+function wp(percentage: number) {
     const value = (percentage * viewportWidth) / 100;
     return Math.round(value);
 }
@@ -31,7 +31,7 @@ export const contentStyle = StyleSheet.create({
         marginBottom: IS_IOS ? 0 : -1, // Prevent a random Android rendering issue
         borderRadius: entryBorderRadius,
 
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 5,
@@ -63,18 +63,18 @@ export const contentStyle = StyleSheet.create({
     },
     textContainer: {
         marginLeft: 0,
-    }
+    },
 });
 
 export const carouselStyle = StyleSheet.create({
     container: {
         marginTop: 10,
-        overflow: 'visible' // for custom animations
+        overflow: 'visible', // for custom animations
     },
     contentContainer: {
         margin: 0,
-    }
-})
+    },
+});
 
 export const paginationStyle = StyleSheet.create({
     container: {
@@ -84,6 +84,6 @@ export const paginationStyle = StyleSheet.create({
         width: 6,
         height: 6,
         borderRadius: 4,
-        marginHorizontal: 2
-    }
-})
+        marginHorizontal: 2,
+    },
+});

@@ -6,10 +6,7 @@ interface State {
     isLoadingComplete: boolean
 }
 
-interface Props {
-}
-
-export default class App extends React.Component<Props, State> {
+export default class App extends React.Component<{}, State> {
     state = {
         isLoadingComplete: false,
     };

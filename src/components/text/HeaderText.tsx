@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { TextStyle, Text } from 'react-native';
-import { colors } from '../../styles/index.style'
+import { Text, TextStyle } from 'react-native';
+
+import { colors } from '../../styles/index.style';
 
 interface Props {
     style?: TextStyle
@@ -13,8 +14,7 @@ export default class HeaderText extends React.Component<Props> {
             fontSize: 41,
             fontWeight: '800',
             paddingBottom: 10,
-            color: colors.headerBlack
+            color: colors.headerBlack,
         }]} />;
     }
 }
-
