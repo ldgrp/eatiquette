@@ -1,4 +1,4 @@
-import { IItem } from '../components/grocerylist/Item';
+import { IItem } from '../components/grocery/Item';
 
 export const GROCERYLIST: IItem[] = [
     {

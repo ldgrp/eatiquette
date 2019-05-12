@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": false,
     "target": "es5",
     "lib": ["es2015", "esnext.asynciterable"],
     "jsx": "react-native",
@@ -10,6 +11,12 @@
     "noImplicitReturns": true,
     "types": [
       "jest"
-    ]
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["./components/*"],
+      "styles/*": ["./styles/*"],
+      "screens/*": ["./screens/*"]
+    }
   }
 }

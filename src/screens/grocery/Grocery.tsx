@@ -7,10 +7,10 @@ import {
 } from 'react-native';
 import { NavigationComponent } from 'react-navigation';
 
-import Item, { IItem } from '../components/grocerylist/Item';
-import SwipeableRow from '../components/grocerylist/SwipeableRow';
-import { GROCERYLIST } from '../static/grocery';
-import { colors } from '../styles/index.style';
+import Item, { IItem } from 'components/grocery/Item';
+import SwipeableRow from 'components/grocery/SwipeableRow';
+import { GROCERYLIST } from 'static/grocery';
+import { colors } from 'styles/index.style';
 
 interface State {
     items: IItem[],

@@ -3,16 +3,16 @@ import * as React from 'react';
 import { Animated, Easing } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
-import BuddyScreen from '../screens/BuddyScreen';
-import GroceryListScreen from '../screens/GroceryListScreen';
-import HomeScreen from '../screens/HomeScreen';
-import MealPlanScreen from '../screens/MealPlanScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import Buddy from 'screens/buddy/Buddy';
+import Grocery from 'screens/grocery/Grocery';
+import Home from 'screens/home/Home';
+import MealPlan from 'screens/mealplan/MealPlan';
+import Settings from 'screens/settings/Settings';
 
-import ModalScreen from '../screens/ModalScreen';
+import ModalScreen from 'screens/ModalScreen';
 
 const HomeStack = createStackNavigator({
-    Home: HomeScreen,
+    Home,
 });
 
 HomeStack.navigationOptions = {
@@ -20,7 +20,7 @@ HomeStack.navigationOptions = {
 };
 
 const MealPlanStack = createStackNavigator({
-    MealPlan: MealPlanScreen,
+    MealPlan,
 });
 
 MealPlanStack.navigationOptions = {
@@ -28,7 +28,7 @@ MealPlanStack.navigationOptions = {
 };
 
 const GroceryListStack = createStackNavigator({
-    GroceryList: GroceryListScreen,
+    Grocery,
 });
 
 GroceryListStack.navigationOptions = {
@@ -37,7 +37,7 @@ GroceryListStack.navigationOptions = {
 };
 
 const BuddyStack = createStackNavigator({
-    Buddy: BuddyScreen,
+    Buddy,
 });
 
 BuddyStack.navigationOptions = {
@@ -45,7 +45,7 @@ BuddyStack.navigationOptions = {
 };
 
 const SettingsStack = createStackNavigator({
-    Settings: SettingsScreen,
+    Settings,
 });
 
 SettingsStack.navigationOptions = {

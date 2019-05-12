@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { ScrollView, StyleSheet, Text } from 'react-native';
+import { colors } from 'styles/index.style';
 
-import { colors } from '../styles/index.style';
-
-export default class BuddyScreen extends React.Component {
+export default class SettingsScreen extends React.Component {
     render() {
         return (
             <ScrollView style={styles.main}>
-                <Text>Buddy System</Text>
+                <Text>Settings</Text>
             </ScrollView>
         );
     }

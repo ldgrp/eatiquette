@@ -14,7 +14,7 @@ import {
     itemWidth,
     paginationStyle,
     sliderWidth,
-} from '../styles/RecipeCarousel.style';
+} from '../../styles/RecipeCarousel.style';
 
 const FIRST_ITEM = 0;
 

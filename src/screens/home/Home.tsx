@@ -6,41 +6,31 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
-import FeaturedCard from '../components/FeaturedCard';
-import RecipeCarousel from '../components/RecipeCarousel';
 
-import HeaderDateText from '../components/text/HeaderDateText';
-import HeaderText from '../components/text/HeaderText';
+import FeaturedCard from 'components/FeaturedCard';
 
-import { colors } from '../styles/index.style';
+import RecipeCarousel from 'components/carousel/RecipeCarousel';
 
-import { BREAKFAST, LUNCH } from '../static/recipes';
+import Header from 'components/home/Header';
+
+import { colors } from 'styles/index.style';
+
+import { BREAKFAST, LUNCH } from 'static/recipes';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const NAMED_DAY = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const NAMED_MONTH = ['January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'];
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         header: null,
     };
 
     render() {
-        const date = new Date();
-        const day = date.getDate();
-        const namedMonth = NAMED_MONTH[date.getMonth()];
-        const namedDay = NAMED_DAY[date.getDay()];
-
         return (
             <SafeAreaView style={styles.main}>
                 <ScrollView style={styles.container} automaticallyAdjustContentInsets={false}>
-                    <View style={styles.header}>
-                        <HeaderDateText>{day} {namedMonth}</HeaderDateText>
-                        <HeaderText>{namedDay}</HeaderText>
-                    </View>
+                    <Header date={new Date()}/>
                     <FeaturedCard
-                        image={require('../../assets/raspberry.jpg')}
+                        image={require('../../../assets/raspberry.jpg')}
                         title="Raspberry Berry Summer"
                         subtitle="Collections"/>
                     <RecipeCarousel title={'Breakfast'} entries={BREAKFAST}/>
@@ -62,7 +52,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: SCREEN_WIDTH * 0.04,
-    },
-    header: {
     },
 });

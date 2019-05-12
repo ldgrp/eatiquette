@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { IItem } from '../components/grocerylist/Item';
+import { IItem } from '../components/grocery/Item';
 import { colors } from '../styles/index.style';
 
 interface State {
@@ -84,7 +84,7 @@ export default class ModalScreen extends React.Component<Props, State> {
         return (
             <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)' }}>
                 <TouchableWithoutFeedback style={{ flex:1 }} onPress={ this.handleBackgroundPress }>
-                <View style={{flex:1}}>
+                <View style={{ flex:1 }}>
                 </View>
                 </TouchableWithoutFeedback>
                 <View style={[styles.main, { bottom: this.state.keyboardHeight }]}>

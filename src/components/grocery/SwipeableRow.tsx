@@ -18,7 +18,7 @@ export default class SwipeableRow extends React.Component<{}> {
         return (
             <View style={{ width, flexDirection: 'row' }}>
                 <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
-                    <RectButton style={styles.doneAction} onPress={() => { }}>
+                    <RectButton style={[styles.action, styles.doneAction]} onPress={() => {}}>
                         <Text style={styles.actionText}>Done</Text>
                     </RectButton>
                 </Animated.View>
@@ -35,7 +35,7 @@ export default class SwipeableRow extends React.Component<{}> {
         return (
             <View style={{ width, flexDirection: 'row' }}>
                 <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
-                    <RectButton style={styles.deleteAction} onPress={() => { }}>
+                    <RectButton style={[styles.action, styles.deleteAction]} onPress={() => {}}>
                         <Text style={styles.actionText}>Delete</Text>
                     </RectButton>
                 </Animated.View>
@@ -67,20 +67,16 @@ export default class SwipeableRow extends React.Component<{}> {
 
 const styles = StyleSheet.create({
     doneAction: {
-        flex: 1,
         backgroundColor: '#2cdd00',
-        justifyContent: 'center',
-        alignItems: 'center',
     },
     undoneAction: {
-        flex: 1,
         backgroundColor: '#dd2c00',
-        justifyContent: 'center',
-        alignItems: 'center',
     },
     deleteAction: {
-        flex: 1,
         backgroundColor: '#dd2c00',
+    },
+    action: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },

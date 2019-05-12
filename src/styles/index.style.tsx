@@ -4,6 +4,6 @@ export const colors = {
     textBlack: 'rgba(0, 0, 0, 0.80)',
     subtitleBlack: 'rgba(0, 0, 0, 0.70)',
 
-    headerBlack: 'rgba(0, 0, 0, 0.91)',
-    headerDateBlack: 'rgba(0, 0, 0, 0.70)',
+    headerTitle: 'rgba(0, 0, 0, 0.91)',
+    headerSubtitle: 'rgba(0, 0, 0, 0.70)',
 };
