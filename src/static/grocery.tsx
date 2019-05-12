@@ -1,28 +1,36 @@
-import { IItem } from '../components/grocery/Item';
+import { ListItem } from 'store/grocery/types';
 
-export const GROCERYLIST: IItem[] = [
+export const GROCERYLIST: ListItem[] = [
     {
-        name: 'Milk',
-        description: '2L',
-        done: false,
+        item: {
+            name: 'Milk',
+            description: '2L',
+            done: false,
+        },
         id: 0,
     },
     {
-        name: 'Bacon',
-        description: '100g',
-        done: false,
+        item: {
+            name: 'Bacon',
+            description: '100g',
+            done: false,
+        },
         id: 1,
     },
     {
-        name: 'All-Purpose Flour',
-        description: '2000g',
-        done: false,
+        item: {
+            name: 'All-Purpose Flour',
+            description: '2000g',
+            done: true,
+        },
         id: 2,
     },
     {
-        name: 'Salt',
-        description: '',
-        done: false,
+        item: {
+            name: 'Salt',
+            description: '',
+            done: false,
+        },
         id: 3,
     },
 ];

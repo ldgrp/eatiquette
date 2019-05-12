@@ -7,13 +7,13 @@ import {
 } from 'react-native';
 import { NavigationComponent } from 'react-navigation';
 
-import Item, { IItem } from 'components/grocery/Item';
-import SwipeableRow from 'components/grocery/SwipeableRow';
+import { ListItem } from 'store/grocery/types';
+import GroceryList from 'components/grocery/GroceryList';
 import { GROCERYLIST } from 'static/grocery';
 import { colors } from 'styles/index.style';
 
 interface State {
-    items: IItem[],
+    items: ListItem[],
     counter: number,
     isInput: boolean
 }
@@ -37,7 +37,7 @@ export default class GroceryListScreen extends React.Component<Props, State> {
         this.setState((prevState) => {
             const items = prevState.items.map((item) => {
                 if (id === item.id) {
-                    item.done = !item.done;
+                    item.item.done = !item.item.done;
                 }
                 return item;
             });
@@ -47,7 +47,7 @@ export default class GroceryListScreen extends React.Component<Props, State> {
         });
     }
 
-    handleAddItem = (item: IItem) => {
+    handleAddItem = (item: ListItem) => {
         this.setState({
             items: [...this.state.items, item],
             counter: this.state.counter + 1,
@@ -66,11 +66,13 @@ export default class GroceryListScreen extends React.Component<Props, State> {
         if (trimName === '' && trimDescription === '') {
             return;
         }
-        const item: IItem = {
-            name: trimName,
-            description: trimDescription,
+        const item: ListItem = {
+            item: {
+                name: trimName,
+                description: trimDescription,
+                done: false,
+            },
             id: this.state.counter,
-            done: false,
         };
 
         this.handleAddItem(item);
@@ -79,20 +81,7 @@ export default class GroceryListScreen extends React.Component<Props, State> {
     render() {
         return (
             <SafeAreaView style={styles.main}>
-                <ScrollView style={styles.container}>
-                    {this.state.items.map(item => (
-                    <SwipeableRow key={item.id}>
-                        <Item
-                            key={item.id}
-                            id={item.id}
-                            name={item.name}
-                            description={item.description}
-                            done={item.done}
-                            setDone={this.handleDone}
-                        />
-                    </SwipeableRow>
-                    ))}
-                </ScrollView>
+                <GroceryList items={this.state.items}/>
                 <Ionicons
                     name={'ios-add-circle'}
                     size={60}

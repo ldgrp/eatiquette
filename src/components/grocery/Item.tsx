@@ -9,6 +9,8 @@ import {
 
 import { colors } from '../../styles/index.style';
 
+import SwipeableRow from './SwipeableRow';
+
 export interface IItem {
     name: string,
     description: string,
@@ -20,7 +22,7 @@ export interface Props extends IItem {
     setDone(id: number): void,
 }
 
-export default class Item extends React.Component<Props> {
+export default class Item extends React.PureComponent<Props> {
     constructor(props: Props) {
         super(props);
     }
@@ -29,6 +31,7 @@ export default class Item extends React.Component<Props> {
         const iconName = this.props.done ? 'ios-checkmark-circle-outline' : 'ios-radio-button-off';
         const strikethrough = this.props.done ? styles.textDone : null;
         return (
+            <SwipeableRow>
             <TouchableOpacity
                     activeOpacity={0.6}
                     style={styles.container}
@@ -43,6 +46,7 @@ export default class Item extends React.Component<Props> {
                 </View>
                 </View>
             </TouchableOpacity>
+            </SwipeableRow>
         );
     }
 }
