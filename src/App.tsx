@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
+
+import store from './store/index';
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -15,7 +18,9 @@ export default class App extends React.Component<{}, State> {
 
     render() {
         return (
-            <AppNavigator />
+            <Provider store={ store }>
+                <AppNavigator />
+            </Provider>
         );
     }
 }
