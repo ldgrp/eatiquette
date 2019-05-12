@@ -8,6 +8,7 @@ import {
 import { NavigationComponent } from 'react-navigation';
 
 import Item, { IItem } from '../components/grocerylist/Item';
+import SwipeableRow from '../components/grocerylist/SwipeableRow';
 import { GROCERYLIST } from '../static/grocery';
 import { colors } from '../styles/index.style';
 
@@ -59,18 +60,28 @@ export default class GroceryListScreen extends React.Component<Props, State> {
         });
     }
 
-    render() {
-        const newItem: IItem = {
-            name: 'test',
-            description: 'testDescription',
-            done: true,
+    handleOnModalDismiss = (name: string, description: string) => {
+        const trimName = name.trim();
+        const trimDescription = description.trim();
+        if (trimName === '' && trimDescription === '') {
+            return;
+        }
+        const item: IItem = {
+            name: trimName,
+            description: trimDescription,
             id: this.state.counter,
+            done: false,
         };
 
+        this.handleAddItem(item);
+    }
+
+    render() {
         return (
             <SafeAreaView style={styles.main}>
                 <ScrollView style={styles.container}>
                     {this.state.items.map(item => (
+                    <SwipeableRow key={item.id}>
                         <Item
                             key={item.id}
                             id={item.id}
@@ -79,6 +90,7 @@ export default class GroceryListScreen extends React.Component<Props, State> {
                             done={item.done}
                             setDone={this.handleDone}
                         />
+                    </SwipeableRow>
                     ))}
                 </ScrollView>
                 <Ionicons
@@ -88,7 +100,7 @@ export default class GroceryListScreen extends React.Component<Props, State> {
                     style={styles.button}
                     onPress={() =>
                         this.props.navigation.navigate('Modal', {
-                            onModalDismiss: () => this.handleAddItem(newItem),
+                            onModalDismiss: this.handleOnModalDismiss,
                         })
                     }
                 />

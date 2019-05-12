@@ -34,21 +34,21 @@ export default class HomeScreen extends React.Component {
 
         return (
             <SafeAreaView style={styles.main}>
-            <ScrollView style={styles.container} automaticallyAdjustContentInsets={false}>
-            <View style={styles.header}>
-                <HeaderDateText>{day} {namedMonth}</HeaderDateText>
-                <HeaderText>{namedDay}</HeaderText>
-            </View>
-            <FeaturedCard
-                image={require('../../assets/raspberry.jpg')}
-                title="Raspberry Berry Summer"
-                subtitle="Collections"/>
-            <RecipeCarousel title={'Breakfast'} entries={BREAKFAST}/>
-            <RecipeCarousel title={'Lunch'} entries={LUNCH}/>
-            <View style={{ height:20 }}>
+                <ScrollView style={styles.container} automaticallyAdjustContentInsets={false}>
+                    <View style={styles.header}>
+                        <HeaderDateText>{day} {namedMonth}</HeaderDateText>
+                        <HeaderText>{namedDay}</HeaderText>
+                    </View>
+                    <FeaturedCard
+                        image={require('../../assets/raspberry.jpg')}
+                        title="Raspberry Berry Summer"
+                        subtitle="Collections"/>
+                    <RecipeCarousel title={'Breakfast'} entries={BREAKFAST}/>
+                    <RecipeCarousel title={'Lunch'} entries={LUNCH}/>
+                    <View style={{ height:20 }}>
 
-            </View>
-            </ScrollView>
+                    </View>
+                </ScrollView>
             </SafeAreaView>
         );
     }

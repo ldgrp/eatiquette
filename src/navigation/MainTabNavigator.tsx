@@ -61,6 +61,7 @@ const Tab = createBottomTabNavigator(
         SettingsStack,
     },
     {
+//        initialRouteName: 'GroceryListStack',
         defaultNavigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ tintColor }) => {
                 const { routeName } = navigation.state;
@@ -91,36 +92,39 @@ const Tab = createBottomTabNavigator(
     },
 );
 
-export default createStackNavigator({
-    TabNavigator: Tab,
-    Modal: ModalScreen,
-},                                  {
-    mode: 'modal',
-    headerMode: 'none',
-    transparentCard: true,
-    transitionConfig: () => ({
-        transitionSpec: {
-            duration: 500,
-            easing: Easing.out(Easing.poly(4)),
-            timing: Animated.timing,
-            useNativeDriver: true,
-        },
-        screenInterpolator: (sceneProps) => {
-            const { layout, position, scene } = sceneProps;
-            const thisSceneIndex = scene.index;
+export default createStackNavigator(
+    {
+        TabNavigator: Tab,
+        Modal: ModalScreen,
+    },
+    {
+        mode: 'modal',
+        headerMode: 'none',
+        transparentCard: true,
+        transitionConfig: () => ({
+            transitionSpec: {
+                duration: 500,
+                easing: Easing.out(Easing.poly(4)),
+                timing: Animated.timing,
+                useNativeDriver: true,
+            },
+            screenInterpolator: (sceneProps) => {
+                const { layout, position, scene } = sceneProps;
+                const thisSceneIndex = scene.index;
 
-            const height = layout.initHeight;
-            const translateY = position.interpolate({
-                inputRange: [thisSceneIndex - 1, thisSceneIndex, thisSceneIndex + 1],
-                outputRange: [height, 0, 0],
-            });
+                const height = layout.initHeight;
+                const translateY = position.interpolate({
+                    inputRange: [thisSceneIndex - 1, thisSceneIndex, thisSceneIndex + 1],
+                    outputRange: [height, 0, 0],
+                });
 
-            const opacity = position.interpolate({
-                inputRange: [thisSceneIndex - 1, thisSceneIndex, thisSceneIndex + 1],
-                outputRange: [0, 1, 0.2],
-            });
+                const opacity = position.interpolate({
+                    inputRange: [thisSceneIndex - 1, thisSceneIndex, thisSceneIndex + 1],
+                    outputRange: [0, 1, 0.2],
+                });
 
-            return { opacity, transform: [{ translateY }] };
-        },
-    }),
-});
+                return { opacity, transform: [{ translateY }] };
+            },
+        }),
+    },
+);

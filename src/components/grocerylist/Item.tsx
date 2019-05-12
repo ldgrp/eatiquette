@@ -38,8 +38,8 @@ export default class Item extends React.Component<Props> {
 
                 <Ionicons name={iconName} size={20} color={'grey'}/>
                 <View style={styles.textContainer}>
-                <Text style={[styles.name, strikethrough]}>{this.props.name}</Text>
-                <Text style={[styles.description, strikethrough]}>{this.props.description}</Text>
+                <Text style={[styles.name, strikethrough]} numberOfLines={1}>{this.props.name}</Text>
+                <Text style={[styles.description, strikethrough]} numberOfLines={1}>{this.props.description}</Text>
                 </View>
                 </View>
             </TouchableOpacity>

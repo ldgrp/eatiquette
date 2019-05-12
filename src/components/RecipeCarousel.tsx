@@ -36,14 +36,11 @@ interface Recipe {
 }
 
 class RecipeCarousel extends React.Component<Props, State> {
-    _carousel = undefined;
+    carousel: any;
 
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            sliderActiveSlide: FIRST_ITEM,
-        };
-    }
+    state = {
+        sliderActiveSlide: FIRST_ITEM,
+    };
 
     render() {
         return (
@@ -51,7 +48,7 @@ class RecipeCarousel extends React.Component<Props, State> {
                 <Text style={contentStyle.title}>{this.props.title}</Text>
                 <Carousel
                     // @ts-ignore
-                    ref={c => this._carousel = c}
+                    ref={(c: Carousel) => this.carousel = c}
                     data={this.props.entries}
                     renderItem={this.renderItem}
                     sliderWidth={sliderWidth}
@@ -73,8 +70,8 @@ class RecipeCarousel extends React.Component<Props, State> {
                     inactiveDotColor={'rgba(0,0,0,0.9)'}
                     inactiveDotOpacity={0.3}
                     inactiveDotScale={1.0}
-                    carouselRef={this._carousel}
-                    tappableDots={!!this._carousel}
+                    carouselRef={this.carousel}
+                    tappableDots={!!this.carousel}
                 />
             </View>
         );
