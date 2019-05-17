@@ -4,12 +4,15 @@ import {
     TextInput,
     View,
     ViewStyle,
+    TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { addItem } from 'store/grocery/actions';
 import { GroceryActionTypes } from 'store/grocery/types';
+import { Ionicons } from '@expo/vector-icons';
+import { colors } from 'styles/index.style';
 
 interface State {
     name: string,
@@ -18,6 +21,7 @@ interface State {
 }
 
 interface Props {
+    done: () => void;
     addItem: (name: string, description: string) => void,
     style: ViewStyle[];
 }
@@ -71,6 +75,9 @@ class AddToolbar extends React.Component<Props, State> {
                     onChangeText={text => this.setState({ description: text })}
                     placeholder={'Notes'}
                 />
+                <TouchableOpacity onPress={ this.props.done }>
+                <Ionicons style={styles.button} size={36} name={'ios-add-circle'} />
+                </TouchableOpacity>
             </View>
         </View>
         );
@@ -87,14 +94,24 @@ export default connect(
 )(AddToolbar);
 
 const styles = StyleSheet.create({
+    button: {
+        color: colors.green,
+        marginLeft: 10,
+    },
     inputContainer: {
-        // borderRadius: 10,
         marginBottom: 10,
-        // backgroundColor: 'rgba(0,0,0,0.1)',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        marginHorizontal: 5,
     },
     input: {
+        borderRadius: 10,
+        backgroundColor: 'rgba(0,0,0,0.1)',
         fontSize: 17,
         paddingLeft: 8,
         height: 40,
+        flex: 1,
     },
 });

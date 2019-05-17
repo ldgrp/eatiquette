@@ -6,4 +6,5 @@ export const colors = {
 
     headerTitle: 'rgba(0, 0, 0, 0.91)',
     headerSubtitle: 'rgba(0, 0, 0, 0.70)',
+    green: "#2AC940",
 };

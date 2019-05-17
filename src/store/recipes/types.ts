@@ -20,8 +20,8 @@ export interface Recipe {
     eatiquetteScore: number
     rating: number
     pricePerServing?: number
-    ingredients?: Ingredient[]
-    steps?: RecipeStep[]
+    ingredients?: string
+    steps?: string
 }
 
 export interface Ingredient {

@@ -1,4 +1,4 @@
-import { Recipe } from 'store/mealplan/types';
+import { Recipe } from 'store/recipes/types';
 
 export const BREAKFAST = [
     {
@@ -57,8 +57,8 @@ export const RECIPES: Recipe[] = [
         eatiquetteScore: 80,
         rating: 4.5,
         pricePerServing: 121,
-        ingredients: undefined,
-        steps: undefined,
+        ingredients: "5 g Agar powder\n100 g Sugar\n500 g Water\n75 g Milk\n1/2 tsp Almond extract\n6 T Fruit cocktail\n150 ml Syrup",
+        steps: "Put agar, sugar, and water in a saucepan and bring to boil.\nTake off heat, and drain some of the water.\nWhen cool, add in milk and almond extract.\nPour mixture into tin.\nWhen completely cool, chill in the refrigerator for about 15 minutes until set.\nCut almond jelly into cubes.\nServe with fruit cocktail and syrup in a glass bowl",
     },
     {
         id: 1,

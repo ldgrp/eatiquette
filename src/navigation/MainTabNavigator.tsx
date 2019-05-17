@@ -9,6 +9,7 @@ import Home from 'screens/home/Home';
 import MealPlan from 'screens/mealplan/MealPlan';
 import Settings from 'screens/settings/Settings';
 import Search from 'screens/home/Search';
+import Recipe from 'screens/recipe/Recipe';
 
 import ModalScreen from 'screens/ModalScreen';
 
@@ -94,9 +95,19 @@ const Tab = createBottomTabNavigator(
     },
 );
 
+const App = createStackNavigator(
+    {
+        Tab,
+        Recipe,
+    },
+    {
+        headerMode: 'none'
+    }
+)
+
 export default createStackNavigator(
     {
-        TabNavigator: Tab,
+        App,
         Modal: ModalScreen,
     },
     {

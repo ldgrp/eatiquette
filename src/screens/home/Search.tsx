@@ -13,6 +13,9 @@ import { SearchBar } from 'react-native-elements';
 import { Ionicons } from '@expo/vector-icons';
 
 import { colors } from 'styles/index.style';
+import RecipeCard from 'components/RecipeCard';
+import { RECIPES } from 'static/recipes';
+import { Recipe } from 'store/recipes/types';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -67,6 +70,17 @@ export default class SearchScreen extends React.Component<Props, State> {
                     onCancel={this.onCancel}
                 />
                 </View>
+
+                {
+                    RECIPES.map((recipe: Recipe, i: number) => 
+                    <TouchableOpacity
+                        key={i}
+                        activeOpacity={0.9}
+                        onPress={() => this.props.navigation.navigate('Recipe', { recipe: recipe })}>
+                        <RecipeCard recipe={recipe} recipeId={recipe.id}/>
+                    </TouchableOpacity>
+                    )
+                }
             </ScrollView>
             </SafeAreaView>
         );

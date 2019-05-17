@@ -14,8 +14,6 @@ import AddToolbar from 'components/grocery/AddToolbar';
 import { colors } from 'styles/index.style';
 
 interface State {
-    name: string,
-    description: string,
     keyboardHeight: number,
 }
 
@@ -33,8 +31,6 @@ export default class ModalScreen extends React.Component<Props, State> {
     keyboardHideSub!: EmitterSubscription;
 
     state = {
-        name: '',
-        description: '',
         keyboardHeight: 0,
     };
 
@@ -60,14 +56,7 @@ export default class ModalScreen extends React.Component<Props, State> {
     }
 
     handleBackgroundPress = () => {
-        const { name, description } = this.state;
-        const trimName = name.trim();
-        const trimDescription = description.trim();
-
-        if (trimName === '' && trimDescription === '') {
-            this.props.navigation.goBack();
-        }
-        return;
+        this.props.navigation.goBack();
     }
 
     render() {
@@ -79,7 +68,7 @@ export default class ModalScreen extends React.Component<Props, State> {
                 <View style={{ flex:1 }}>
                 </View>
                 </TouchableWithoutFeedback>
-                <AddToolbar style={[styles.main, { bottom: this.state.keyboardHeight }]}/>
+                <AddToolbar done={ this.handleBackgroundPress } style={[styles.main, { bottom: this.state.keyboardHeight }]}/>
             </View>
         );
     }
