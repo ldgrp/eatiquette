@@ -6,6 +6,7 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
+import { NavigationComponent } from 'react-navigation';
 
 import FeaturedCard from 'components/FeaturedCard';
 
@@ -16,19 +17,28 @@ import Header from 'components/home/Header';
 import { colors } from 'styles/index.style';
 
 import { BREAKFAST, LUNCH } from 'static/recipes';
+import SearchIcon from 'components/home/SearchIcon';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-export default class HomeScreen extends React.Component {
+interface Props {
+    navigation: NavigationComponent
+}
+
+export default class HomeScreen extends React.Component<Props> {
     static navigationOptions = {
         header: null,
     };
 
     render() {
+        const { navigation } = this.props;
         return (
             <SafeAreaView style={styles.main}>
                 <ScrollView style={styles.container} automaticallyAdjustContentInsets={false}>
+                    <View style={styles.header}>
                     <Header date={new Date()}/>
+                    <SearchIcon onPress={() => navigation.navigate('Search')}/>
+                    </View>
                     <FeaturedCard
                         image={require('../../../assets/raspberry.jpg')}
                         title="Raspberry Berry Summer"
@@ -53,4 +63,14 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: SCREEN_WIDTH * 0.04,
     },
+    header: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    searchIcon: {
+
+    }
 });

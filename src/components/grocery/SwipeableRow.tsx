@@ -5,9 +5,19 @@ import { RectButton } from 'react-native-gesture-handler';
 
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-export default class SwipeableRow extends React.Component<{}> {
+interface Props {
+    done: boolean,
+    doneAction: () => void,
+    deleteAction: () => void,
+}
+
+export default class SwipeableRow extends React.Component<Props> {
     _swipeableRow!: Swipeable;
 
+    onDone = () => {
+        this.props.doneAction();
+
+    }
     renderLeftActions = (progress: Animated.Value) => {
         const width = 80;
         const trans = progress.interpolate({
@@ -18,7 +28,7 @@ export default class SwipeableRow extends React.Component<{}> {
         return (
             <View style={{ width, flexDirection: 'row' }}>
                 <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
-                    <RectButton style={[styles.action, styles.doneAction]} onPress={() => {}}>
+                    <RectButton style={[styles.action, styles.doneAction]} onPress={this.onDone}>
                         <Text style={styles.actionText}>Done</Text>
                     </RectButton>
                 </Animated.View>
@@ -35,7 +45,7 @@ export default class SwipeableRow extends React.Component<{}> {
         return (
             <View style={{ width, flexDirection: 'row' }}>
                 <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
-                    <RectButton style={[styles.action, styles.deleteAction]} onPress={() => {}}>
+                    <RectButton style={[styles.action, styles.deleteAction]} onPress={this.props.deleteAction}>
                         <Text style={styles.actionText}>Delete</Text>
                     </RectButton>
                 </Animated.View>

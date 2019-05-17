@@ -1,32 +1,38 @@
 import * as React from 'react';
 import { FlatList } from 'react-native';
+import { connect } from 'react-redux';
 
 import Item from './Item';
 
 import { ListItem } from 'store/grocery/types';
+import { AppState } from 'store/index';
 
 interface Props {
-    items: ListItem[],
+    items: Record<number, ListItem>,
 }
 
-const GroceryList: React.SFC<Props> = (props: Props) => {
-    const { items } = props;
-    return (
-        <FlatList
-            data={items}
-            keyExtractor={i => String(i.id)}
-            renderItem={({ item }) => (
-                <Item
-                    key={item.id}
-                    id={item.id}
-                    name={item.item.name}
-                    description={item.item.description}
-                    done={item.item.done}
-                    setDone={()=>{}}
-                />
-            )}
-        />
-    );
-};
+class GroceryList extends React.Component<Props> {
+    render() {
+        const items = this.props.items;
+        return (
+            <FlatList
+                data={Object.keys(items)}
+                keyExtractor={key => key}
+                renderItem={key => (
+                    <Item
+                        key={key.index}
+                        itemId={key.item}
+                    />
+                )}
+            />
+        );
+    }
+}
 
-export default GroceryList;
+const mapStateToProps = (state: AppState) => ({
+    items: state.grocery.items,
+});
+
+export default connect(
+    mapStateToProps,
+)(GroceryList);

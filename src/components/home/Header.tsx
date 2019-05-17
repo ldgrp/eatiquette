@@ -38,7 +38,7 @@ const Header: React.SFC<Props> = (props: Props) => {
     const namedDay = NAMED_DAY[date.getDay()];
 
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <HeaderSubtitle>{day} {namedMonth}</HeaderSubtitle>
             <HeaderTitle>{namedDay}</HeaderTitle>
         </View>

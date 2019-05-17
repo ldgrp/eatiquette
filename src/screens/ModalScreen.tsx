@@ -1,23 +1,21 @@
 import * as React from 'react';
 import {
-    Button,
     EmitterSubscription,
     Keyboard,
     KeyboardEvent,
+    Platform,
     StyleSheet,
-    TextInput,
     TouchableWithoutFeedback,
     View,
 } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { IItem } from '../components/grocery/Item';
-import { colors } from '../styles/index.style';
+import AddToolbar from 'components/grocery/AddToolbar';
+import { colors } from 'styles/index.style';
 
 interface State {
     name: string,
     description: string,
-
     keyboardHeight: number,
 }
 
@@ -26,12 +24,13 @@ interface NavigationParams {
 }
 
 interface Props {
+    addItem: (name: string, description: string) => void,
     navigation: NavigationScreenProp<NavigationParams>,
 }
 
 export default class ModalScreen extends React.Component<Props, State> {
-    keyboardWillShowSub!: EmitterSubscription;
-    keyboardWillHideSub!: EmitterSubscription;
+    keyboardShowSub!: EmitterSubscription;
+    keyboardHideSub!: EmitterSubscription;
 
     state = {
         name: '',
@@ -40,31 +39,24 @@ export default class ModalScreen extends React.Component<Props, State> {
     };
 
     componentWillMount() {
-        this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow);
-        this.keyboardWillHideSub = Keyboard.addListener('keyboardWillHide', this.keyboardWillHide);
+        const keyboardShow = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
+        const keyboardHide = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
+
+        this.keyboardShowSub = Keyboard.addListener(keyboardShow, this.handleKeyboardShow);
+        this.keyboardHideSub = Keyboard.addListener(keyboardHide, this.handleKeyboardHide);
     }
 
     componentWillUnmount() {
-        this.keyboardWillShowSub.remove();
-        this.keyboardWillHideSub.remove();
+        this.keyboardShowSub.remove();
+        this.keyboardHideSub.remove();
     }
 
-    keyboardWillShow = (e: KeyboardEvent) => {
+    handleKeyboardShow = (e: KeyboardEvent) => {
         this.setState({ keyboardHeight: e.endCoordinates.height });
     }
 
-    keyboardWillHide = () => {
+    handleKeyboardHide = () => {
         this.setState({ keyboardHeight: 0 });
-    }
-
-    createItem = () => {
-        const item: IItem = {
-            id: 4,
-            name: this.state.name,
-            description: this.state.description,
-            done: false,
-        };
-        return item;
     }
 
     handleBackgroundPress = () => {
@@ -79,40 +71,15 @@ export default class ModalScreen extends React.Component<Props, State> {
     }
 
     render() {
-        const onDismiss = this.props.navigation.getParam('onModalDismiss');
-
         return (
-            <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)' }}>
-                <TouchableWithoutFeedback style={{ flex:1 }} onPress={ this.handleBackgroundPress }>
+            <View style={styles.container}>
+                <TouchableWithoutFeedback
+                    style={{ flex:1 }}
+                    onPress={ this.handleBackgroundPress }>
                 <View style={{ flex:1 }}>
                 </View>
                 </TouchableWithoutFeedback>
-                <View style={[styles.main, { bottom: this.state.keyboardHeight }]}>
-                    <View style={styles.inputContainer}>
-                        <TextInput
-                            autoFocus={true}
-                            blurOnSubmit={false}
-                            value={this.state.name}
-                            style={styles.input}
-                            onChangeText={text => this.setState({ name: text })}
-                            placeholder={'Name'}></TextInput>
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <TextInput
-                            blurOnSubmit={false}
-                            value={this.state.description}
-                            style={styles.input}
-                            onChangeText={text => this.setState({ description: text })}
-                            placeholder={'Description'}></TextInput>
-                    </View>
-                    <Button
-                        onPress={() => {
-                            onDismiss(this.state.name, this.state.description);
-                            this.props.navigation.goBack();
-                        }}
-                        title="Done"
-                    />
-                </View>
+                <AddToolbar style={[styles.main, { bottom: this.state.keyboardHeight }]}/>
             </View>
         );
     }
@@ -131,22 +98,13 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: '100%',
     },
-    inputContainer: {
-        // borderRadius: 10,
-        marginBottom: 10,
-        // backgroundColor: 'rgba(0,0,0,0.1)',
-    },
-    input: {
-        fontSize: 17,
-        paddingLeft: 8,
-        height: 40,
-    },
     button: {
         position: 'absolute',
         bottom: 30,
         right: 30,
     },
     container: {
-
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
     },
 });

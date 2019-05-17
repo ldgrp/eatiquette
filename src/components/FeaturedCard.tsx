@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         borderRadius: 12,
-        height: SCREEN_HEIGHT - 326,
+        height: SCREEN_HEIGHT * 0.6,
         marginBottom: 20,
         backgroundColor:'rgba(255,0,0,0)',
         shadowColor: '#000',

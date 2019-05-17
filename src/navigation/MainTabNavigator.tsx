@@ -8,11 +8,13 @@ import Grocery from 'screens/grocery/Grocery';
 import Home from 'screens/home/Home';
 import MealPlan from 'screens/mealplan/MealPlan';
 import Settings from 'screens/settings/Settings';
+import Search from 'screens/home/Search';
 
 import ModalScreen from 'screens/ModalScreen';
 
 const HomeStack = createStackNavigator({
     Home,
+    Search,
 });
 
 HomeStack.navigationOptions = {

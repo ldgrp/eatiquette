@@ -1,3 +1,5 @@
+import { Recipe } from 'store/mealplan/types';
+
 export const BREAKFAST = [
     {
         title: 'Good Old-fashioned Pancakes',
@@ -38,3 +40,60 @@ export const LUNCH = [
         image: require('../../assets/tuna_wraps.jpeg'),
     },
 ];
+
+export const RECIPES: Recipe[] = [
+    {
+        id: 0,
+        name: 'Good Old-fashioned Pancakes',
+        image: require('../../assets/pancakes.jpg'),
+        readyInMinutes: 30,
+        calories: 421,
+        servings: 4,
+        meals: ['Breakfast'],
+        vegetarian: true,
+        vegan: false,
+        glutenFree: false,
+        cheap: true,
+        eatiquetteScore: 80,
+        rating: 4.5,
+        pricePerServing: 121,
+        ingredients: undefined,
+        steps: undefined,
+    },
+    {
+        id: 1,
+        name: 'Avocado Toast',
+        image: require('../../assets/avocado_toast.jpg'),
+        readyInMinutes: 10,
+        calories: 156,
+        servings: 2,
+        meals: ['Breakfast'],
+        vegetarian: true,
+        vegan: true,
+        glutenFree: false,
+        cheap: false,
+        eatiquetteScore: 95,
+        rating: 5.0,
+        pricePerServing: 250,
+        ingredients: undefined,
+        steps: undefined,
+    },
+    {
+        id: 2,
+        name: 'Vanilla Yogurt',
+        image: require('../../assets/yogurt.jpg'),
+        readyInMinutes: 5,
+        calories: 201,
+        servings: 1,
+        meals: ['Breakfast'],
+        vegetarian: true,
+        vegan: false,
+        glutenFree: true,
+        cheap: true,
+        eatiquetteScore: 60,
+        rating: 3.5,
+        pricePerServing: 312,
+        ingredients: undefined,
+        steps: undefined,
+    },
+]
