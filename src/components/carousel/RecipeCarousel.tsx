@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native';
-import Carousel, { Pagination } from 'react-native-snap-carousel';  // tslint:disable-line
+import Carousel, { Pagination, CarouselProperties } from 'react-native-snap-carousel';  // tslint:disable-line
 
 import {
     carouselStyle,
@@ -18,7 +18,7 @@ import {
 
 const FIRST_ITEM = 0;
 
-interface Props {
+interface Props extends Partial<CarouselProperties<Recipe>> {
     title: string,
     entries: Recipe[]
 }
@@ -36,6 +36,13 @@ interface Recipe {
 }
 
 class RecipeCarousel extends React.Component<Props, State> {
+    static defaultProps = {
+        activeSlideAlignment: 'center',
+        inactiveSlideScale: 0.9,
+        inactiveSlideOpacity: 0.8,
+        loop: true,
+    };
+
     carousel: any;
 
     state = {
@@ -57,9 +64,7 @@ class RecipeCarousel extends React.Component<Props, State> {
                     containerCustomStyle={carouselStyle.container}
                     contentContainerCustomStyle={carouselStyle.contentContainer}
                     onSnapToItem={index => this.setState({ sliderActiveSlide: index })}
-                    inactiveSlideScale={0.90}
-                    inactiveSlideOpacity={0.8}
-                    loop={true}
+                    {...this.props}
                 />
                 <Pagination
                     dotsLength={Object.keys(this.props.entries).length}
@@ -76,6 +81,8 @@ class RecipeCarousel extends React.Component<Props, State> {
             </View>
         );
     }
+
+    private mealPlan
 
     private renderItem(i: { item: Recipe, index: number }) {
         const { item } = i;
@@ -109,6 +116,7 @@ class RecipeCarousel extends React.Component<Props, State> {
             </TouchableOpacity>
         );
     }
+
 }
 
 export default RecipeCarousel;
