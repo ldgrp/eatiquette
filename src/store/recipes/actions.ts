@@ -1,4 +1,10 @@
-import { ADD_RECIPE, DELETE_RECIPE, Recipe, RecipeActionTypes, RecipeId } from './types';
+import {
+    ADD_RECIPE,
+    DELETE_RECIPE,
+    Recipe,
+    RecipeActionTypes,
+    RecipeId,
+} from './types';
 
 export function addRecipe(recipeId: RecipeId, recipe: Recipe): RecipeActionTypes {
     return {

@@ -11,7 +11,7 @@ export interface Recipe {
     image: string
     readyInMinutes: number
     calories: number
-    servings: number
+    servings: string
     meals: Meals[]
     vegetarian: boolean
     vegan: boolean
@@ -21,7 +21,7 @@ export interface Recipe {
     rating: number
     pricePerServing?: number
     ingredients?: string
-    steps?: string
+    procedure?: string
 }
 
 export interface Ingredient {
@@ -37,6 +37,12 @@ export interface RecipeState {
     recipes: Record<RecipeId, Recipe>
 }
 
+export interface SearchResultsState {
+    recipes: Record<RecipeId, Recipe>
+    lastSearched: Date
+    isValid: boolean
+}
+
 interface AddRecipeAction {
     type: typeof ADD_RECIPE
     recipeId: RecipeId
@@ -48,4 +54,5 @@ interface DeleteRecipeAction {
     recipeId: RecipeId
 }
 
-export type RecipeActionTypes = AddRecipeAction | DeleteRecipeAction;
+export type RecipeActionTypes = AddRecipeAction |
+                                DeleteRecipeAction;

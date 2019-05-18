@@ -10,6 +10,7 @@ import MealPlan from 'screens/mealplan/MealPlan';
 import Settings from 'screens/settings/Settings';
 import Search from 'screens/home/Search';
 import Recipe from 'screens/recipe/Recipe';
+import FocusedRecipe from 'screens/recipe/FocusedRecipe';
 
 import ModalScreen from 'screens/ModalScreen';
 
@@ -108,6 +109,7 @@ const App = createStackNavigator(
 export default createStackNavigator(
     {
         App,
+        FocusedRecipe,
         Modal: ModalScreen,
     },
     {

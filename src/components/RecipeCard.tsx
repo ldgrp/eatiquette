@@ -21,13 +21,16 @@ export default class RecipeCard extends React.PureComponent<Props> {
 
         const hoursLabel = hours > 0 ? `${hours}h ` : '';
         const minutesLabel = minutes > 0 ? `${minutes}m` : '';
-        const servingsLabel = recipe.servings === 1 ? `${recipe.servings} serving` : `${recipe.servings} servings`;
+        const servings = (recipe.servings.match('^[^\\d]*(\\d+)') || ['2'])[0];
+        const servingsLabel = servings === '1' ? `${servings} serving` : `${servings} servings`;
         const caloriesLabel = `${recipe.calories} cal`;
+
+        const image = { uri: recipe.image };
 
         return (
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
-                    <Image source={recipe.image} style={styles.image}/>
+                    <Image source={image} style={styles.image}/>
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>{recipe.name}</Text>

@@ -6,11 +6,12 @@ import IngredientItem from './IngredientItem';
 
 interface Props {
     data: string | undefined;
+    recipeName: string;
 }
 
 export default class Ingredients extends React.PureComponent<Props> {
     render() {
-        const { data: rawIngredients } = this.props;
+        const { data: rawIngredients, recipeName } = this.props;
 
         if (typeof rawIngredients === 'undefined') {
             return <View/>;
@@ -26,6 +27,7 @@ export default class Ingredients extends React.PureComponent<Props> {
                         <IngredientItem
                             key={i}
                             name={ingredient}
+                            recipeName={recipeName}
                             style={
                                 i % 2 ? styles.itemAlternate : styles.item
                             }

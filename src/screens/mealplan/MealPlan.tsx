@@ -16,12 +16,14 @@ export default class RecipeScreen extends React.Component {
                 <RecipeCarousel
                     title={'Breakfast'}
                     entries={BREAKFAST}
-                    activeSlideAlignment={'center'}
+                    firstItem={0}
+                    activeSlideAlignment={'start'}
                     loop={false}/>
                 <RecipeCarousel
                     title={'Lunch'}
                     entries={LUNCH}
-                    activeSlideAlignment={'center'}
+                    firstItem={0}
+                    activeSlideAlignment={'start'}
                     loop={false}/>
             </ScrollView>
             </SafeAreaView>

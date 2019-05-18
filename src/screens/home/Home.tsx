@@ -19,6 +19,7 @@ import { colors } from 'styles/index.style';
 import { BREAKFAST, LUNCH } from 'static/recipes';
 import SearchIcon from 'components/home/SearchIcon';
 
+
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 interface Props {
@@ -36,8 +37,8 @@ export default class HomeScreen extends React.Component<Props> {
             <SafeAreaView style={styles.main}>
                 <ScrollView style={styles.container} automaticallyAdjustContentInsets={false}>
                     <View style={styles.header}>
-                    <Header date={new Date()}/>
-                    <SearchIcon onPress={() => navigation.navigate('Search')}/>
+                        <Header date={new Date()}/>
+                        <SearchIcon onPress={() => navigation.navigate('Search')}/>
                     </View>
                     <FeaturedCard
                         image={require('../../../assets/raspberry.jpg')}

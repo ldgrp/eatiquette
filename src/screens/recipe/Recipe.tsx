@@ -22,10 +22,12 @@ interface HeaderProps {
 const Header = (props: HeaderProps) => {
     const { recipe } = props;
 
+    const gradient = ['rgba(0,0,0,0.4)', 'transparent', 'transparent', 'rgba(0,0,0,0.6)'];
+
     return (
         <View style={headerStyles.container}>
-            <Image source={recipe.image} style={headerStyles.image}/>
-            <LinearGradient colors={['transparent', 'rgba(0,0,0,0.6)']} style={headerStyles.overlay}/>
+            <Image source={{ uri: recipe.image }} style={headerStyles.image}/>
+            <LinearGradient colors={gradient} style={headerStyles.overlay}/>
             <View style={headerStyles.textContainer}>
                 <Text style={headerStyles.text}>
                     {recipe.name}
@@ -64,7 +66,9 @@ export default class RecipeScreen extends React.Component<Props> {
     }
 
     render() {
+        const { navigation } = this.props;
         const recipe = this.recipe;
+        const servings = (recipe.servings.match('^[^\\d]*(\\d+)') || ['2'])[0];
 
         return (
             <ScrollView style={styles.main}>
@@ -74,13 +78,22 @@ export default class RecipeScreen extends React.Component<Props> {
             <View style={styles.container}>
                 <RecipeInformation
                     readyInMinutes={recipe.readyInMinutes}
-                    servings={recipe.servings}
+                    servings={Number.parseInt(servings, 10)}
                     calories={recipe.calories}
                 />
-                <Button title={ "Start Cooking" } type="solid" raised/>
+                <Button
+                    title={ "Start Cooking" }
+                    type="solid"
+                    raised
+                    onPress={() => navigation.navigate('FocusedRecipe', {
+                        ingredients: recipe.ingredients,
+                        procedure: recipe.procedure,
+                        readyInMinutes: recipe.readyInMinutes,
+                    })}
+                />
                 <View style={styles.wrapper}>
-                    <Ingredients data={recipe.ingredients} />
-                    <Steps data={recipe.steps} />
+                    <Ingredients data={recipe.ingredients} recipeName={recipe.name} />
+                    <Steps data={recipe.procedure} />
                 </View>
             </View>
             </ScrollView>

@@ -2,27 +2,41 @@ import * as React from 'react';
 import { View, ViewStyle, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from 'styles/index.style';
+import { Dispatch } from 'redux';
+import { GroceryActionTypes, Item } from 'store/grocery/types';
+import { addItem } from 'store/grocery/actions';
+import { connect } from 'react-redux';
 
 interface Props {
     name: string
+    recipeName: string
     style: ViewStyle
+    addItem: (item: Item) => void
 }
 
 interface State {
     done: boolean
 }
 
-export default class IngredientItem extends React.Component<Props, State> {
+class IngredientItem extends React.Component<Props, State> {
     state = {
         done: false,
     };
+
+    onPress = () => {
+        const { done } = this.state;
+        const { name, recipeName } = this.props;
+        const item = { name, description: recipeName, done: false };
+        this.setState({ done: !done });
+        this.props.addItem(item);
+    }
 
     render() {
         const { name, style } = this.props;
         const { done } = this.state;
 
         return (
-            <TouchableOpacity style={[styles.container, style]} onPress={() => this.setState({ done: !done })}>
+            <TouchableOpacity style={[styles.container, style]} onPress={this.onPress}>
             <Ionicons style={[styles.button, done ? styles.buttonDone : null]} size={20} name={
                 done ? 'ios-remove-circle' : 'ios-add-circle'
             }/>
@@ -35,6 +49,12 @@ export default class IngredientItem extends React.Component<Props, State> {
         )
     }
 }
+
+const mapDispatchToProps = (dispatch: Dispatch<GroceryActionTypes>) => ({
+    addItem: (item: Item) => dispatch(addItem(item)),
+});
+
+export default connect(null, mapDispatchToProps)(IngredientItem);
 
 const styles = StyleSheet.create({
     container: {
