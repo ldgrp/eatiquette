@@ -82,8 +82,6 @@ class RecipeCarousel extends React.Component<Props, State> {
         );
     }
 
-    private mealPlan
-
     private renderItem(i: { item: Recipe, index: number }) {
         const { item } = i;
 

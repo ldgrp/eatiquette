@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { ScrollView, StyleSheet, Text, SafeAreaView, Dimensions } from 'react-native';
-import { colors } from 'styles/index.style';
+import {
+    Dimensions,
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+} from 'react-native';
+
 import RecipeCarousel from 'components/carousel/RecipeCarousel';
 import { BREAKFAST, LUNCH } from 'static/recipes';
+import { colors } from 'styles/index.style';
 
 export default class RecipeScreen extends React.Component {
     static navigationOptions = {
@@ -43,4 +49,3 @@ const styles = StyleSheet.create({
         padding: SCREEN_WIDTH * 0.04,
     },
 });
-

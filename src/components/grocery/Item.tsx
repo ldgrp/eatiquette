@@ -16,10 +16,6 @@ import { colors } from '../../styles/index.style';
 
 import SwipeableRow from './SwipeableRow';
 
-interface PProps {
-    itemId: number,
-}
-
 interface Props {
     itemId: number,
     item: ListItem,
@@ -61,7 +57,7 @@ class Item extends React.PureComponent<Props> {
     }
 }
 
-const mapStateToProps = (state: AppState, ownProps: PProps) => ({
+const mapStateToProps = (state: AppState, ownProps: Partial<Props>) => ({
     item: state.grocery.items[ownProps.itemId]
 });
 

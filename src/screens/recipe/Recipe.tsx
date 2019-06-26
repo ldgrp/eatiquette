@@ -10,6 +10,7 @@ import IngredientItem from 'components/recipe/IngredientItem';
 import Ingredients from 'components/recipe/Ingredients';
 import Steps from 'components/recipe/Steps';
 import RecipeInformation from 'components/recipe/RecipeInformation';
+import Ring from 'components/Ring';
 
 interface Props {
     navigation: NavigationComponent
@@ -57,6 +58,8 @@ const Bar = (props) => {
     )
 }
 
+const SCREEN_WIDTH = Dimensions.get('screen').width;
+
 export default class RecipeScreen extends React.Component<Props> {
     recipe!: Recipe;
 
@@ -70,6 +73,8 @@ export default class RecipeScreen extends React.Component<Props> {
         const recipe = this.recipe;
         const servings = (recipe.servings.match('^[^\\d]*(\\d+)') || ['2'])[0];
 
+        const nutrition = [Math.random(), Math.random(), Math.random()];
+
         return (
             <ScrollView style={styles.main}>
             <StatusBar hidden={true}/>
@@ -81,6 +86,14 @@ export default class RecipeScreen extends React.Component<Props> {
                     servings={Number.parseInt(servings, 10)}
                     calories={recipe.calories}
                 />
+                <View style={styles.nutritionContainer}>
+                    <Text style={styles.title}>Nutrition</Text>
+                    <View style={styles.nutrition}>
+                        <Ring percent={nutrition[0]} label={"Carbohydrates"}/>
+                        <Ring percent={nutrition[1]} label={"Protein"}/>
+                        <Ring percent={nutrition[2]} label={"Fat"}/>
+                    </View>
+                </View>
                 <Button
                     title={ "Start Cooking" }
                     type="solid"
@@ -111,11 +124,28 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
     },
     wrapper: {
-        marginVertical: 20,
+        marginVertical: 10,
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: '500',
+        color: colors.textBlack,
+        paddingBottom: 10,
+    },
+    nutritionContainer: {
+        marginBottom: 10,
+        paddingVertical: 10,
+//        borderTopWidth: StyleSheet.hairlineWidth,
+//        borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    nutrition: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     bar: {
         position: 'absolute',
-        top: 10,
+        top: 15,
         left: 20,
         right: 20,
         bottom: 0,

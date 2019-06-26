@@ -2,16 +2,16 @@ import * as React from 'react';
 import {
     StyleSheet,
     TextInput,
+    TouchableOpacity,
     View,
     ViewStyle,
-    TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
+import { Ionicons } from '@expo/vector-icons';
 import { addItem } from 'store/grocery/actions';
 import { GroceryActionTypes } from 'store/grocery/types';
-import { Ionicons } from '@expo/vector-icons';
 import { colors } from 'styles/index.style';
 
 interface State {

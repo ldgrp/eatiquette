@@ -3,22 +3,18 @@ import {
     Dimensions,
     SafeAreaView,
     ScrollView,
+    StatusBar,
     StyleSheet,
     View,
 } from 'react-native';
 import { NavigationComponent } from 'react-navigation';
 
-import FeaturedCard from 'components/FeaturedCard';
-
 import RecipeCarousel from 'components/carousel/RecipeCarousel';
-
+import FeaturedCard from 'components/FeaturedCard';
 import Header from 'components/home/Header';
-
-import { colors } from 'styles/index.style';
-
-import { BREAKFAST, LUNCH } from 'static/recipes';
 import SearchIcon from 'components/home/SearchIcon';
-
+import { BREAKFAST, LUNCH } from 'static/recipes';
+import { colors } from 'styles/index.style';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -35,6 +31,7 @@ export default class HomeScreen extends React.Component<Props> {
         const { navigation } = this.props;
         return (
             <SafeAreaView style={styles.main}>
+                <StatusBar hidden={false}/>
                 <ScrollView style={styles.container} automaticallyAdjustContentInsets={false}>
                     <View style={styles.header}>
                         <Header date={new Date()}/>
@@ -58,6 +55,7 @@ export default class HomeScreen extends React.Component<Props> {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
+        paddingTop: 20,
         backgroundColor: colors.background,
     },
     container: {
@@ -73,5 +71,5 @@ const styles = StyleSheet.create({
     },
     searchIcon: {
 
-    }
+    },
 });

@@ -68,7 +68,10 @@ export default class ModalScreen extends React.Component<Props, State> {
                 <View style={{ flex:1 }}>
                 </View>
                 </TouchableWithoutFeedback>
-                <AddToolbar done={ this.handleBackgroundPress } style={[styles.main, { bottom: this.state.keyboardHeight }]}/>
+                <AddToolbar
+                    done={ this.handleBackgroundPress }
+                    style={[styles.main, { bottom: this.state.keyboardHeight }]}
+                />
             </View>
         );
     }

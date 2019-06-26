@@ -1,22 +1,30 @@
 import * as React from 'react';
-import { ScrollView, StyleSheet, Text, SafeAreaView, View, Dimensions } from 'react-native';
-import { colors } from 'styles/index.style';
-import HeaderTitle from 'components/text/HeaderTitle';
+import {
+    Dimensions,
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+} from 'react-native';
 import { ListItem } from 'react-native-elements';
+
+import HeaderTitle from 'components/text/HeaderTitle';
+import { colors } from 'styles/index.style';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const MEAL_PLAN = [
-    { name: 'Logging', },
-    { name: 'Units', },
-    { name: 'Notifications', },
-]
+    { name: 'Logging' },
+    { name: 'Units' },
+    { name: 'Notifications' },
+];
 
 const SUPPORT = [
-    { name: 'Privacy', },
-    { name: 'Terms & Conditions', },
-    { name: 'About', },
-]
+    { name: 'Privacy' },
+    { name: 'Terms & Conditions' },
+    { name: 'About' },
+];
 
 export default class SettingsScreen extends React.Component {
     static navigationOptions = {
@@ -32,11 +40,11 @@ export default class SettingsScreen extends React.Component {
                 </View>
 
                 <ListItem
-                    leftAvatar={{source: {uri: "https://i.pravatar.cc/100"}}}
+                    leftAvatar={{ source: { uri: 'https://randomuser.me/api/portraits/med/men/84.jpg' } }}
                     title={'Brandon S.'}
-                    titleStyle={{fontSize: 24}}
+                    titleStyle={{ fontSize: 24 }}
                     subtitle={'Male  65kg  180cm'}
-                    subtitleStyle={{color: 'rgba(0,0,0,0.7)'}}
+                    subtitleStyle={{ color: 'rgba(0,0,0,0.7)' }}
                     chevron
                     topDivider
                     bottomDivider
@@ -79,6 +87,7 @@ export default class SettingsScreen extends React.Component {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
+        paddingTop: 20,
         backgroundColor: colors.background,
     },
     container: {

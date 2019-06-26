@@ -48,7 +48,4 @@ const styles = StyleSheet.create({
         bottom: 30,
         right: 30,
     },
-    container: {
-
-    },
 });

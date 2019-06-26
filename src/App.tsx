@@ -19,6 +19,8 @@ export default class App extends React.Component<{}, State> {
 
     async componentWillMount() {
         // TODO: Fix hacky
+        await Font.loadAsync({ 'MaterialIcons':
+            require('@expo/vector-icons/src/vendor/react-native-vector-icons/Fonts/MaterialIcons.ttf') });
         await Font.loadAsync({ 'Material Icons':
             require('@expo/vector-icons/src/vendor/react-native-vector-icons/Fonts/MaterialIcons.ttf') });
         await Font.loadAsync({ 'Ionicons':

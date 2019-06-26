@@ -14,7 +14,7 @@ class SearchSpinner extends React.PureComponent<Props> {
 
         return (
             !isFetching ? <View /> :
-            <ActivityIndicator size="small" color={colors.green} />
+            <ActivityIndicator size="small" color={'gray'} />
         );
     }
 }

@@ -1,16 +1,18 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as React from 'react';
 import { Animated, Easing } from 'react-native';
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator } from 'react-navigation';
 
 import Buddy from 'screens/buddy/Buddy';
+import Feed from 'screens/buddy/Feed';
+import Loading from 'screens/buddy/Loading';
 import Grocery from 'screens/grocery/Grocery';
 import Home from 'screens/home/Home';
-import MealPlan from 'screens/mealplan/MealPlan';
-import Settings from 'screens/settings/Settings';
 import Search from 'screens/home/Search';
-import Recipe from 'screens/recipe/Recipe';
+import MealPlan from 'screens/mealplan/MealPlan';
 import FocusedRecipe from 'screens/recipe/FocusedRecipe';
+import Recipe from 'screens/recipe/Recipe';
+import Settings from 'screens/settings/Settings';
 
 import ModalScreen from 'screens/ModalScreen';
 
@@ -40,12 +42,19 @@ GroceryListStack.navigationOptions = {
     tabBarLabel: 'Grocery List',
 };
 
-const BuddyStack = createStackNavigator({
+const FeedStack = createStackNavigator({
+    FeedScreen: Feed,
+});
+
+const BuddyStack = createSwitchNavigator({
+    Loading,
     Buddy,
+    Feed: FeedStack,
 });
 
 BuddyStack.navigationOptions = {
     tabBarLabel: 'Buddy',
+    initialRouteName: 'Loading',
 };
 
 const SettingsStack = createStackNavigator({
@@ -65,7 +74,6 @@ const Tab = createBottomTabNavigator(
         SettingsStack,
     },
     {
-//        initialRouteName: 'GroceryListStack',
         defaultNavigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ tintColor }) => {
                 const { routeName } = navigation.state;
@@ -102,9 +110,9 @@ const App = createStackNavigator(
         Recipe,
     },
     {
-        headerMode: 'none'
-    }
-)
+        headerMode: 'none',
+    },
+);
 
 export default createStackNavigator(
     {

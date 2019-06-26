@@ -1,4 +1,3 @@
-import { NavigationComponent } from 'react-navigation';
 import * as React from 'react';
 import {
     Dimensions,
@@ -7,13 +6,14 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
+import { NavigationComponent } from 'react-navigation';
 
-import { colors } from 'styles/index.style';
 import RecipeSearchBar from 'components/home/RecipeSearchBar';
-import SearchSpinner from 'components/home/SearchSpinner';
 import SearchResults from 'components/home/SearchResults';
+import SearchSpinner from 'components/home/SearchSpinner';
 import { store } from 'store/index';
 import { invalidateSearch } from 'store/search/actions';
+import { colors } from 'styles/index.style';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -31,8 +31,6 @@ export default class SearchScreen extends React.Component<Props> {
     }
 
     render() {
-        const { navigation } = this.props;
-
         return (
             <SafeAreaView style={styles.main}>
             <ScrollView>
@@ -51,6 +49,7 @@ export default class SearchScreen extends React.Component<Props> {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
+        paddingTop: 20,
         backgroundColor: colors.background,
     },
     container: {

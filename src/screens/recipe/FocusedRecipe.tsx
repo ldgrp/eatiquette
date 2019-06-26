@@ -84,9 +84,7 @@ export default class FocusedRecipe extends React.Component<Props, State> {
                     <Text style={styles.step}>{stepText}</Text>
                 </View>
                 <LinearGradient colors={['rgba(13,13,13,1)', 'transparent']} style={styles.gap} />
-                <ScrollView>
                     <Text style={styles.text}>{procedureStep}</Text>
-                </ScrollView>
             </View>
         )
     }
