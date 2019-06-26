@@ -3,9 +3,6 @@ import * as React from 'react';
 import { Animated, Easing } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator } from 'react-navigation';
 
-import Buddy from 'screens/buddy/Buddy';
-import Feed from 'screens/buddy/Feed';
-import Loading from 'screens/buddy/Loading';
 import Grocery from 'screens/grocery/Grocery';
 import Home from 'screens/home/Home';
 import Search from 'screens/home/Search';
@@ -42,21 +39,6 @@ GroceryListStack.navigationOptions = {
     tabBarLabel: 'Grocery List',
 };
 
-const FeedStack = createStackNavigator({
-    FeedScreen: Feed,
-});
-
-const BuddyStack = createSwitchNavigator({
-    Loading,
-    Buddy,
-    Feed: FeedStack,
-});
-
-BuddyStack.navigationOptions = {
-    tabBarLabel: 'Buddy',
-    initialRouteName: 'Loading',
-};
-
 const SettingsStack = createStackNavigator({
     Settings,
 });
@@ -70,7 +52,6 @@ const Tab = createBottomTabNavigator(
         HomeStack,
         MealPlanStack,
         GroceryListStack,
-        BuddyStack,
         SettingsStack,
     },
     {
@@ -89,8 +70,6 @@ const Tab = createBottomTabNavigator(
                 } else if (routeName === 'GroceryListStack') {
                     IconComponent = MaterialCommunityIcons;
                     iconName = 'cart';
-                } else if (routeName === 'BuddyStack') {
-                    iconName = 'md-people';
                 } else if (routeName === 'SettingsStack') {
                     iconName = 'ios-settings';
                 }

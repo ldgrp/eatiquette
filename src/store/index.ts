@@ -7,21 +7,18 @@ import { groceryReducer } from './grocery/reducers';
 import { mealPlanReducer } from './mealplan/reducers';
 import { recipeReducer } from './recipes/reducers';
 import { searchReducer } from './search/reducers';
-import { buddyReducer } from './buddy/reducers';
 
 const rootReducer = combineReducers({
     grocery: groceryReducer,
     mealPlan: mealPlanReducer,
     recipes: recipeReducer,
     search: searchReducer,
-    buddy: buddyReducer,
-
 });
 
 const persistConfig = {
     storage,
     key: 'root', // TODO: What the fuck is this?
-    blacklist: ['search', 'buddy'],
+    blacklist: ['search', ],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
